@@ -811,7 +811,7 @@ html, body {
 }
 
 .hero-text {
-    max-width: 890px;
+    max-width: 90%;
     width: 100%;
     margin: 0 auto;
     padding: 0 15px;
@@ -820,7 +820,7 @@ html, body {
 
 .hero-text h1 {
     position: relative;
-    font-size: 100px;
+    font-size: 90px;
     font-style: bold;
     font-weight: bolder;
     color: #fff;
