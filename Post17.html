@@ -36,6 +36,33 @@
             margin-bottom: 10px;
             line-height: 1.5;
         }
+
+        .pdf-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        .pdf-content {
+            position: relative;
+            width: 80%;
+            height: 80%;
+            margin: 40px auto;
+            background: #fff;
+        }
+
+        .pdf-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -92,10 +119,9 @@
                                     NuTree ist nun offiziell beendet. Das gesamte Projektteam hat sich zum Abschluss in der Stadt Hannover getroffen, um gemeinsam die Hauptergebnisse der 3-jährigen Projektzeit zusammen zu tragen. Folgende Abschlussdokumente und Zusammenfassungen des Projekts sind auf dieser Seite zu finden:
                                 </p>
 
-                                <ul> <br>
-                                    <li>Abschlussbericht in der Fachzeitschrift „Deutsche Baumschule“</li>
-                                    <li>Nutzerhandbuch für den Einsatz von Funk-Bodenfeuchte-Sensorik bei der Bewässerung von Baumschulkulturen und Stadtgrün aus den Erfahrungen des Projektes NuTree</li>
-                                    
+                                <ul>
+                                    <li><a href="#" class="pdf-link" data-target="pdf-abschlussbericht">Abschlussbericht in der Fachzeitschrift „Deutsche Baumschule“</a></li>
+                                    <li><a href="#" class="pdf-link" data-target="pdf-nutzerhandbuch">Nutzerhandbuch für den Einsatz von Funk-Bodenfeuchte-Sensorik bei der Bewässerung von Baumschulkulturen und Stadtgrün aus den Erfahrungen des Projektes NuTree</a></li>
                                 </ul>
 
                                 <p style="text-align: justify;">
@@ -123,6 +149,18 @@
         </section>
 
     </main>
+    <div id="pdf-abschlussbericht" class="pdf-overlay">
+        <div class="pdf-content">
+            <span class="pdf-close">&times;</span>
+            <embed src="assets/pdf/abschlussbericht.pdf" type="application/pdf" width="100%" height="100%">
+        </div>
+    </div>
+    <div id="pdf-nutzerhandbuch" class="pdf-overlay">
+        <div class="pdf-content">
+            <span class="pdf-close">&times;</span>
+            <embed src="assets/pdf/nutzerhandbuch.pdf" type="application/pdf" width="100%" height="100%">
+        </div>
+    </div>
 
     <footer id="colophon" class="site-footer">
         <div class="container">
@@ -158,6 +196,20 @@
     <script src="assets/js/jquery.countTo.min.js"></script>
     <script src="assets/js/jquery.shuffle.min.js"></script>
     <script src="assets/js/script.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.pdf-link').on('click', function (e) {
+                e.preventDefault();
+                var target = $(this).data('target');
+                $('#' + target).fadeIn();
+            });
+
+            $('.pdf-close').on('click', function () {
+                $(this).closest('.pdf-overlay').fadeOut();
+            });
+        });
+    </script>
 
 </body>
 
